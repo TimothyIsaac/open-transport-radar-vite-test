@@ -1,20 +1,22 @@
 import React from 'react'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
-import {Grid, GridItem} from "@chakra-ui/react";
+import { Grid, GridItem, Box, Flex } from "@chakra-ui/react";
 
 
-function Layout({children}: { children: React.ReactNode }) {
+function Layout({ children }: { children: React.ReactNode }) {
     return (
         <Grid height="100vh" templateRows="auto 1fr auto">
             <GridItem>
-                <Header/>
+                <Header />
             </GridItem>
-            <GridItem>
+            <GridItem alignItems="center">
+
                 {children}
+
             </GridItem>
             <GridItem>
-                <Footer/>
+                <Footer />
             </GridItem>
         </Grid>
     )

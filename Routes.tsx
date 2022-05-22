@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
-import { Home, Settings } from './pages'
+import { Home, Settings } from './src/pages'
 
 
 function AppRoutes() {
