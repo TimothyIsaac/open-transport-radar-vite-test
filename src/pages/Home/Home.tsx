@@ -1,6 +1,7 @@
 import { Heading, Text, Container, Grid, GridItem } from '@chakra-ui/react'
 import React from 'react'
 import { Layout } from '../../components'
+import DepartureBoard from '../../components/DepartureBoard/DepartureBoard'
 
 function Home() {
     return (
@@ -18,7 +19,7 @@ function Home() {
                 <GridItem bg="gray.100" colSpan={{ "base": 1, "md": 3 }}  >
                     Suchleiste
                 </GridItem>
-                <GridItem bg="blue.100" >Departures</GridItem>
+                <GridItem bg="blue.100" ><DepartureBoard /></GridItem>
                 <GridItem bg="green.100" colSpan={{ "base": 1, "md": 2 }} >Radar</GridItem>
             </Grid>
         </Layout>
