@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
-import { Home, Settings } from './src/pages'
+import { Home, Settings, ContactForm } from './src/pages'
 
 
 function AppRoutes() {
@@ -9,6 +9,7 @@ function AppRoutes() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/settings" element={<Settings/>}/>
+            <Route path="/contact-form" element={<ContactForm/>}/>
         </Routes>
     </BrowserRouter>
   )

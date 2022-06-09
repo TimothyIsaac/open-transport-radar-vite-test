@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box, Button, Center, Flex, Heading, useColorMode, Avatar, HStack, IconButton, useDisclosure, Menu, MenuButton, MenuItem, MenuDivider, MenuList, Stack } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { CloseIcon, HamburgerIcon, QuestionOutlineIcon, SettingsIcon } from '@chakra-ui/icons';
+import { CloseIcon, HamburgerIcon, QuestionOutlineIcon, SettingsIcon, ChatIcon } from '@chakra-ui/icons';
+import ColorModeToggle from '../ColorModeToggle/ColorModeToggle';
 
 
 function Header() {
@@ -34,6 +35,9 @@ function Header() {
                     <Box mx={"2rem"} mr={"4rem"}>
                         <NavLink to={"/home"}>Link2</NavLink>
                     </Box>
+                    <Box mx={"2rem"} mr={"4rem"}>
+                        <ColorModeToggle/>
+                    </Box>
                     <Menu>
                         <MenuButton>
                             <Avatar />
@@ -42,7 +46,7 @@ function Header() {
 
                             <MenuItem icon={<SettingsIcon/>}>Settings</MenuItem>
                             <MenuItem icon={<QuestionOutlineIcon/>}>Help</MenuItem>
-                            <MenuItem>Contact</MenuItem>
+                            <MenuItem icon={<ChatIcon/>}>Contact</MenuItem>
                             <MenuDivider />
                             <MenuItem color="red">Log Out</MenuItem>
                         </MenuList>
@@ -59,6 +63,7 @@ function Header() {
                     <Stack as="nav" spacing={4}>
                         <NavLink to={"/home"}>Settings</NavLink>
                         <NavLink to={"/home"}>Link2</NavLink>
+                        <NavLink to={"/contact-form"}>ContactForm</NavLink>
                     </Stack>
                 </Box>
             ) : null}
