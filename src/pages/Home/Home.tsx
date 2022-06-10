@@ -7,8 +7,8 @@ function Home() {
     return (
         <Layout>
             <Grid
-                m={{ "base": "0.5rem", "sm": "1rem", "md": "2rem" }}
-
+                m={{ "base": "0", "sm": "0", "md": "0 auto" }}
+                p={{"base": "0.5rem", "sm": "1rem", "md": "2rem" }}
                 maxW="1600px"
                 h={{ "base": "50em", "md": "50em" }}
                 gap={{ "base": "0.5rem", "md": "2rem" }}

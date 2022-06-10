@@ -6,11 +6,11 @@ import { Grid, GridItem, Box, Flex } from "@chakra-ui/react";
 
 function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <Grid height="100vh" templateRows="auto 1fr auto">
+        <Grid height="100vh" width="100vw" templateRows="auto 1fr auto">
             <GridItem>
                 <Header />
             </GridItem>
-            <GridItem alignItems="center">
+            <GridItem alignItems="center" justifyContent="center" width="100%" border="solid">
 
                 {children}
 
