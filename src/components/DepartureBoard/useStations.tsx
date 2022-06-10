@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { getStations } from '../../api/stations'
 
 const useStations = () => {
+    const [isLoadingGeoLocation, setLoadingGeoLocation] = useState(false)
+    const [isLoadingStations, setLoadingStations] = useState(false)
     const [currentCoords, setCoords] = useState<GeolocationCoordinates>()
-    const [nearbyStations, setNearbyStations] = useState<StationType.Station[]>([])
+    const [nearbyStations, setNearbyStations] = useState<Hafas_Stations.Station[]>([])
 
-    // Fetching Browser Location
+    /** Fetching Browser Location **/
     useEffect(() => {
         if ("geolocation" in navigator) {
+            setLoadingGeoLocation(true)
             navigator.geolocation.getCurrentPosition(position => {
                 console.log("found position,", position.coords)
                 setCoords(position.coords)
