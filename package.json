@@ -18,7 +18,8 @@
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.31.3",
     "react-router-dom": "6",
-    "react-transition-group": "^4.4.2"
+    "react-transition-group": "^4.4.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
