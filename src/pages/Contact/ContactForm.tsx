@@ -34,33 +34,6 @@ function ContactForm() {
 
   const isError = emailRegex.test(input)
 
-  // function validateEmail(value: string) {
-  //   const valid = emailRegex.test(value)
-  //   let error = ""
-  //   if (!valid) {
-  //    error = 'Bitte gebe deine richtige E-Mail-Adresse an!'     
-  //   } else if (valid) {
-  //     error = ""
-  //   }
-  //   return error
-  // }
-
-  // function validateEmail(value: string) {
-  //   let error;
-  //   if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-  //     error = 'Invalid email address';
-  //   }
-  //   return error;
-  // }
-  
-  function validateUsername(value: string) {
-    let error;
-    if (value === '') {
-      error = 'Ey trage hier was ein!';
-    }
-    return error;
-  }
-
   const initialValues: IFormInputs = {
     firstname: '',
     lastname: '',
@@ -131,7 +104,6 @@ function ContactForm() {
                         id='firstname'
                         placeholder='Vorname'
                         name='firstname'
-                        // validate={validateUsername}
                         />              
                     {errors.firstname && touched.firstname && <FormHelperText>{errors.firstname}</FormHelperText>}
                   </FormControl>
@@ -145,7 +117,6 @@ function ContactForm() {
                       id='lastname'
                       name='lastname'
                       placeholder='Nachname'
-                      //validate={validateUsername}
                     />
                     {errors.lastname && touched.lastname && <FormHelperText>{errors.lastname}</FormHelperText>}
                   </FormControl>
@@ -156,9 +127,6 @@ function ContactForm() {
                       id='email'
                       name='email'
                       type='email'
-                      // value={input}
-                      // onChange={handleInputChange}
-                      // validate={validateEmail}
                     />
                     {errors.email && touched.email && <div>{errors.email}</div>}
                   </FormControl>
@@ -166,7 +134,8 @@ function ContactForm() {
 
                   <FormControl>
                     <FormLabel htmlFor='issue'>Anliegen</FormLabel>
-                    <Field as={Select} id='issue' name='issue' placeholder='Was ist dein Anliegen?'>
+                    <Field as={Select} id='issue' name='issue'>
+                      <option disabled selected>Was ist dein Anliegen?</option>
                       <option>Es fehlen Verkerhrslinien bei mir</option>
                       <option>Die ÖPNV Daten stimmen nicht</option>
                       <option>Keine Ahnung tbh</option>
