@@ -9,7 +9,7 @@ function AppRoutes() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/settings" element={<Settings/>}/>
-            <Route path="/contact-form" element={<ContactForm/>}/>
+            <Route path="/feedback" element={<ContactForm/>}/>
         </Routes>
     </BrowserRouter>
   )

@@ -30,10 +30,10 @@ function Header() {
                 </Center>
                 <Center display={{ base: 'none', md: 'flex' }}>
                     <Box mx={"2rem"}>
-                        <NavLink to={"/home"}>Link1</NavLink>
+                        <NavLink to={"/"}>Home</NavLink>
                     </Box>
                     <Box mx={"2rem"} mr={"4rem"}>
-                        <NavLink to={"/home"}>Link2</NavLink>
+                        <NavLink to={"/feedback"}>Contact</NavLink>
                     </Box>
                     <Box mx={"2rem"} mr={"4rem"}>
                         <ColorModeToggle/>
@@ -63,7 +63,7 @@ function Header() {
                     <Stack as="nav" spacing={4}>
                         <NavLink to={"/home"}>Settings</NavLink>
                         <NavLink to={"/home"}>Link2</NavLink>
-                        <NavLink to={"/contact-form"}>ContactForm</NavLink>
+                        <NavLink to={"/feedback"}>Contact</NavLink>
                     </Stack>
                 </Box>
             ) : null}
