@@ -45,15 +45,13 @@ function ContactForm() {
   //   return error
   // }
 
-  function validateEmail(value: string) {
-    let error;
-    if (!value) {
-      error = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-      error = 'Invalid email address';
-    }
-    return error;
-  }
+  // function validateEmail(value: string) {
+  //   let error;
+  //   if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+  //     error = 'Invalid email address';
+  //   }
+  //   return error;
+  // }
   
   function validateUsername(value: string) {
     let error;
@@ -71,22 +69,26 @@ function ContactForm() {
     text: ''
   }
 
-  // const ValidationSchema = Yup.object().shape({
-  //   firstname: Yup.string()
-  //     .min(2, 'Vorname zu kurz!')
-  //     .max(50, 'VorName zu lang!')
-  //     .required('Required'),
-  //   lastname: Yup.string()
-  //     .min(2, 'Nachname zu kurz!')
-  //     .max(50, 'Nachname zu lang!')
-  //     .required('Nachname wird benötigt'),
-  //   email: Yup.string().email('Ungültige email').required('Required'),
-  //   issue
-  //   text: Yup.string()
-  //     .min(2, 'Bitte mindestens 20 Zeichen verwenden.')
-  //     .max(500, 'Bitte maximal 500 Zeichen verwenden.')
-  //     .required('Required'),
-  // });
+  const ValidationSchema = Yup.object().shape({
+    firstname: Yup.string()
+      .min(2, 'Vorname zu kurz!')
+      .max(50, 'VorName zu lang!')
+      .required('Vorname wird benötigt'),
+    lastname: Yup.string()
+      .min(2, 'Nachname zu kurz!')
+      .max(50, 'Nachname zu lang!')
+      .required('Nachname wird benötigt'),
+    email: Yup.string()
+      .email('Ungültige email')
+      .required('E-Mail wird benötigt'),
+    issue: Yup.string()
+      .ensure()
+      .required("Bitte gebe einen Grund an"),
+    text: Yup.string()
+      .min(2, 'Bitte mindestens 2 Zeichen verwenden.')
+      .max(500, 'Bitte maximal 500 Zeichen verwenden.')
+      .required('Bitte schreibe hier dein Feedback'),
+  });
 
   return (
     <Layout>
@@ -114,10 +116,9 @@ function ContactForm() {
             <Formik 
               initialValues={initialValues}
               onSubmit={() => {console.log; setShowForm(false)}}
-              // validationSchema={ValidationSchema}
+              validationSchema={ValidationSchema}
               >
               
-              {/* {(props: FormikProps<IFormInputs>) => ( */}
               {({errors, touched}) => (
 
                 <Form>
@@ -130,10 +131,9 @@ function ContactForm() {
                         id='firstname'
                         placeholder='Vorname'
                         name='firstname'
-                        validate={validateUsername}
-                        />
-                          
-                    {/* {errors.firstname && touched.firstname && <FormHelperText>{errors.firstname}</FormHelperText>} */}
+                        // validate={validateUsername}
+                        />              
+                    {errors.firstname && touched.firstname && <FormHelperText>{errors.firstname}</FormHelperText>}
                   </FormControl>
                     
 
@@ -143,10 +143,11 @@ function ContactForm() {
                     <Field
                       as={Input}
                       id='lastname'
-                      name='nachname'
+                      name='lastname'
                       placeholder='Nachname'
-                      validate={validateUsername}
+                      //validate={validateUsername}
                     />
+                    {errors.lastname && touched.lastname && <FormHelperText>{errors.lastname}</FormHelperText>}
                   </FormControl>
 
                   <FormControl isRequired>
@@ -155,13 +156,11 @@ function ContactForm() {
                       id='email'
                       name='email'
                       type='email'
-                      value={input}
-                      onChange={handleInputChange}
-                      validate={validateEmail}
-
+                      // value={input}
+                      // onChange={handleInputChange}
+                      // validate={validateEmail}
                     />
                     {errors.email && touched.email && <div>{errors.email}</div>}
-
                   </FormControl>
 
 
@@ -172,6 +171,7 @@ function ContactForm() {
                       <option>Die ÖPNV Daten stimmen nicht</option>
                       <option>Keine Ahnung tbh</option>
                     </Field>
+                    {errors.issue && touched.issue && <FormHelperText>{errors.issue}</FormHelperText>}
                   </FormControl>
 
                   <FormControl>
@@ -181,6 +181,8 @@ function ContactForm() {
                       placeholder='Schreibe uns dein Feedback'
                       size='md'
                     />
+                  {errors.text && touched.text && <FormHelperText>{errors.text}</FormHelperText>}
+
                   </FormControl>
 
                   <Button
